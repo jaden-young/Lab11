@@ -66,7 +66,6 @@ public class CarPlateTest {
     
     public static void main(String[] args) {
         
-        
         //generate 3 random carPlates objects and write them to a txt file
         try {
             FileOutputStream fos = new FileOutputStream("carPlates.txt", false);
@@ -81,6 +80,7 @@ public class CarPlateTest {
             }
             fos.close();
         }
+        
         catch(FileNotFoundException fnfe){
             System.out.println("Could not create/modify the file carPlates.txt "
                     + "\nThere is probably a problem with the permissions.");
@@ -90,6 +90,7 @@ public class CarPlateTest {
             System.out.println(fnfe.toString());
             fnfe.printStackTrace(System.out);
         }
+        
         catch(IOException ioe){
             System.out.print("An IOException was caught: ");
             System.out.println(ioe.getMessage());
@@ -102,10 +103,12 @@ public class CarPlateTest {
         //read objects from txt file, print toString for each object to the 
         //console window and write toString to new txt file output.
         try {
+            
             FileInputStream fis = new FileInputStream("carPlates.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
             FileOutputStream fos = new FileOutputStream("output.txt", false);
             PrintWriter pw = new PrintWriter(fos);
+            
             try {
                 while(true){
                     CarPlate tmp = (CarPlate)ois.readObject();
@@ -113,19 +116,23 @@ public class CarPlateTest {
                     pw.println(tmp.toString());
                 }
             }
+            
             catch(EOFException eofe){
                 System.out.println("End of file reached");
             }
+            
             catch(ClassNotFoundException cnfe){
                 System.out.println("A ClassNotFoundException was caught: " + 
                         cnfe.getMessage());
             }
+            
             finally{
                 System.out.println("Closing file");
                 ois.close();
                 pw.close();
             }
         }
+        
         catch(FileNotFoundException fnfe){
             System.out.println("A FileNotFoundException was caught: " + 
                     fnfe.getMessage());
@@ -133,6 +140,7 @@ public class CarPlateTest {
             System.out.println(fnfe.toString());
             fnfe.printStackTrace(System.out);
         }
+        
         catch(IOException ioe){
             System.out.print("An IOException was caught: ");
             System.out.println(ioe.getMessage());
