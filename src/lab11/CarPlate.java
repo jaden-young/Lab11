@@ -4,7 +4,7 @@ package lab11;
  *
  * @author jaden
  */
-public class CarPlate {
+public class CarPlate implements java.io.Serializable{
     
     //instance variables
     private String plateNumber;
@@ -71,7 +71,7 @@ public class CarPlate {
      * @param xPlateNumber - New plate number for the license plate
      * @throws IllegalArgumentException - For arguments that are not 7 
      *  characters in length and for arguments that do not have a space at the 
-     *  4th index position
+     *  3rd index position
      */
     public final void setPlateNumber(String xPlateNumber) throws 
             IllegalArgumentException{
@@ -79,9 +79,9 @@ public class CarPlate {
         if (xPlateNumber.length() != 7)
             throw new IllegalArgumentException("License plate number must be "
                     + "7 characters long");
-        if (xPlateNumber.charAt(4) != ' ')
+        if (xPlateNumber.charAt(3) != ' ')
             throw new IllegalArgumentException("Licese plate number must be two"
-                    + " groups of 3 characters separated by a space at the 4th"
+                    + " groups of 3 characters separated by a space at the 3rd"
                     + " index position");
         plateNumber = xPlateNumber;
     }
