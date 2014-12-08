@@ -1,8 +1,12 @@
 package lab11;
 
 /**
- *
- * @author jaden
+ * Defines an object representing a license plate. Objects have a license plate
+ * number, a state, and a color. The plate number must be 7 digits long with a 
+ * space in the middle. State must be an integer 1-50. Color can be any string.
+ * Get/set methods are provided for each field, along with a default and 
+ * overloaded constructor, and toString/equals methods. 
+ * @author Jaden Young
  */
 public class CarPlate implements java.io.Serializable{
     

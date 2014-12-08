@@ -3,8 +3,14 @@ package lab11;
 import java.util.Random;
 import java.io.*;
 /**
+ * Client program of the CarPlate class. The program generates 3 CarPlate 
+ * objects with appropriate random values for the fields, and writes them to 
+ * a text file using ObjectOutputStream. Then the file is read using 
+ * ObjectInputStream, and the output of the toString method for each object is 
+ * printed to both the console window and to another text file called 
+ * "output.txt".
  * 
- * @author jaden
+ * @author Jaden Young
  */
 public class CarPlateTest {
     
@@ -62,14 +68,18 @@ public class CarPlateTest {
             FileOutputStream fos = new FileOutputStream("carPlates.txt", false);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             
-            //generate and write 3 objects to the file
-            for (int i = 0; i < 3; i++){
-                CarPlate tmpCarPlate = new CarPlate(generatePlateNumber(),
-                                                     generateState(), 
-                                                     generateColor());
-                oos.writeObject(tmpCarPlate);
+            try{
+                //generate and write 3 objects to the file
+                for (int i = 0; i < 3; i++){
+                    CarPlate tmpCarPlate = new CarPlate(generatePlateNumber(),
+                                                         generateState(), 
+                                                         generateColor());
+                    oos.writeObject(tmpCarPlate);
+                }
             }
-            fos.close();
+            finally{
+                oos.close();
+            }
         }
         
         catch(FileNotFoundException fnfe){
