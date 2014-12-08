@@ -57,6 +57,13 @@ public class CarPlateTest {
     
     
     
+    
+    
+    
+    
+    
+    
+    
     public static void main(String[] args) {
         
         
@@ -76,7 +83,7 @@ public class CarPlateTest {
         }
         catch(FileNotFoundException fnfe){
             System.out.println("Could not create/modify the file carPlates.txt "
-                    + "- There is probably a problem with the permissions.");
+                    + "\nThere is probably a problem with the permissions.");
             System.out.print("Message: ");
             System.out.println(fnfe.getMessage());
             System.out.print("toString: ");
@@ -133,7 +140,5 @@ public class CarPlateTest {
             System.out.println(ioe.toString());
             ioe.printStackTrace(System.out);
         }
-        
-        
     }
 }
