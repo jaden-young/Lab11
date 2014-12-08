@@ -11,7 +11,6 @@ public class CarPlateTest {
     //random number generator for class
     private static final Random rand = new Random();
     
-    
     /**
      * Generates a random license plate number in the format "000 000", where 
      * the two groups of characters are randomly generated as either integers
@@ -34,7 +33,6 @@ public class CarPlateTest {
         return plateNumber.toUpperCase();
     }
     
-    
     /**
      * Generates a random integer 1-50 representing the State of the license 
      * plate
@@ -43,7 +41,6 @@ public class CarPlateTest {
     private static int generateState(){
         return rand.nextInt(50) + 1;
     }
-    
     
     /**
      * Generates a random color from a predefined array of 10 color choices
@@ -54,12 +51,6 @@ public class CarPlateTest {
             "Green", "Orange", "Pink", "Yellow", "Purple", "Periwinkle"};
         return colorList[rand.nextInt(10)];
     }
-    
-    
-    
-    
-    
-    
     
     
     
