@@ -1,23 +1,15 @@
 package lab11;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
 import java.util.Random;
-import java.io.ObjectOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 /**
  * 
  * @author jaden
  */
 public class CarPlateTest {
     
-    
-    
     //random number generator for class
     private static final Random rand = new Random();
-    
     
     
     /**
@@ -70,7 +62,6 @@ public class CarPlateTest {
         
         //generate 3 random carPlates objects and write them to a txt file
         try {
-            //create output streams
             FileOutputStream fos = new FileOutputStream("carPlates.txt", false);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             
@@ -81,6 +72,7 @@ public class CarPlateTest {
                                                      generateColor());
                 oos.writeObject(tmpCarPlate);
             }
+            fos.close();
         }
         catch(FileNotFoundException fnfe){
             System.out.println("Could not create/modify the file carPlates.txt "
@@ -89,15 +81,15 @@ public class CarPlateTest {
             System.out.println(fnfe.getMessage());
             System.out.print("toString: ");
             System.out.println(fnfe.toString());
+            fnfe.printStackTrace(System.out);
         }
         catch(IOException ioe){
-            System.out.println("Problem writing to the file");
-            System.out.print("Message: ");
+            System.out.print("An IOException was caught: ");
             System.out.println(ioe.getMessage());
             System.out.print("toString: ");
             System.out.println(ioe.toString());
+            ioe.printStackTrace(System.out);
         }
-        
         
         
         //read objects from txt file, print toString for each object to the 
@@ -105,23 +97,41 @@ public class CarPlateTest {
         try {
             FileInputStream fis = new FileInputStream("carPlates.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            
+            FileOutputStream fos = new FileOutputStream("output.txt", false);
+            PrintWriter pw = new PrintWriter(fos);
             try {
-                while(ois.read() != -1){
-                    System.out.println(ois.readObject().toString());
+                while(true){
+                    CarPlate tmp = (CarPlate)ois.readObject();
+                    System.out.println(tmp.toString());
+                    pw.println(tmp.toString());
                 }
             }
-            catch(ClassNotFoundException cnfe){
-                
+            catch(EOFException eofe){
+                System.out.println("End of file reached");
             }
-            
-            
+            catch(ClassNotFoundException cnfe){
+                System.out.println("A ClassNotFoundException was caught: " + 
+                        cnfe.getMessage());
+            }
+            finally{
+                System.out.println("Closing file");
+                ois.close();
+                pw.close();
+            }
         }
         catch(FileNotFoundException fnfe){
-            
+            System.out.println("A FileNotFoundException was caught: " + 
+                    fnfe.getMessage());
+            System.out.print("toString: ");
+            System.out.println(fnfe.toString());
+            fnfe.printStackTrace(System.out);
         }
         catch(IOException ioe){
-            
+            System.out.print("An IOException was caught: ");
+            System.out.println(ioe.getMessage());
+            System.out.print("toString: ");
+            System.out.println(ioe.toString());
+            ioe.printStackTrace(System.out);
         }
         
         
