@@ -1,9 +1,0 @@
-Plate number: Y2U VJ4
-State: 26
-Color: Red
-Plate number: 88D 301
-State: 18
-Color: Green
-Plate number: LIZ T25
-State: 3
-Color: Red
