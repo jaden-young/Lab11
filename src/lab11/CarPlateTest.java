@@ -94,7 +94,7 @@ public class CarPlateTest {
         }
         
         catch(IOException ioe){
-            System.out.print("An IOException was caught: ");
+            System.out.print("There was a problem writing to the file: ");
             System.out.println(ioe.getMessage());
             System.out.print("toString: ");
             System.out.println(ioe.toString());
@@ -121,12 +121,14 @@ public class CarPlateTest {
             }
             
             catch(EOFException eofe){
-                System.out.println("End of file reached");
+                System.out.println("\nEnd of file reached");
             }
             
             catch(ClassNotFoundException cnfe){
                 System.out.println("A ClassNotFoundException was caught: " + 
                         cnfe.getMessage());
+                System.out.println(cnfe.toString());
+                cnfe.printStackTrace(System.out);
             }
             
             finally{
@@ -137,7 +139,7 @@ public class CarPlateTest {
         }
         
         catch(FileNotFoundException fnfe){
-            System.out.println("A FileNotFoundException was caught: " + 
+            System.out.println("Couldn't find the file: " + 
                     fnfe.getMessage());
             System.out.print("toString: ");
             System.out.println(fnfe.toString());
@@ -145,7 +147,7 @@ public class CarPlateTest {
         }
         
         catch(IOException ioe){
-            System.out.print("An IOException was caught: ");
+            System.out.print("There was a problem reading from the file: ");
             System.out.println(ioe.getMessage());
             System.out.print("toString: ");
             System.out.println(ioe.toString());
