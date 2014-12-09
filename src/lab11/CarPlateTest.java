@@ -65,6 +65,7 @@ public class CarPlateTest {
         
         //generate 3 random carPlates objects and write them to a txt file
         try {
+            
             FileOutputStream fos = new FileOutputStream("carPlates.txt", false);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             
@@ -99,6 +100,7 @@ public class CarPlateTest {
             System.out.println(ioe.toString());
             ioe.printStackTrace(System.out);
         }
+        
         
         
         //read objects from txt file, print toString for each object to the 
